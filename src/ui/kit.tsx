@@ -10,6 +10,7 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
+import { LOGO_PATH, LOGO_VIEWBOX } from './logoPath';
 
 const cx = (...c: (string | false | null | undefined)[]) => c.filter(Boolean).join(' ');
 export { cx };
@@ -232,15 +233,19 @@ export const useToast = () => useContext(ToastCtx);
 
 // ── Varios ──────────────────────────────────────────────────────────────────
 
-export function Logo({ size = 'md' }: { size?: 'md' | 'lg' }) {
-  const dot = size === 'lg' ? 'size-[18px]' : 'size-3';
+/** El hongo de SOMA. Toma el color del texto (currentColor), así sigue el tema. */
+export function LogoMark({ className }: { className?: string }) {
   return (
-    <div className="flex items-center gap-3" aria-label="SOMA">
-      <div className="flex gap-1">
-        <span className={cx(dot, 'rounded-full bg-accent')} />
-        <span className={cx(dot, 'rounded-full bg-rest/40')} />
-        <span className={cx(dot, 'rounded-full bg-rest/40')} />
-      </div>
+    <svg viewBox={LOGO_VIEWBOX} fill="currentColor" fillRule="evenodd" aria-hidden className={className}>
+      <path d={LOGO_PATH} />
+    </svg>
+  );
+}
+
+export function Logo({ size = 'md' }: { size?: 'md' | 'lg' }) {
+  return (
+    <div className={cx('flex items-center', size === 'lg' ? 'gap-3' : 'gap-2')} role="img" aria-label="SOMA">
+      <LogoMark className={cx('text-accent-fg', size === 'lg' ? 'h-11' : 'h-7')} />
       <span className={cx('font-semibold tracking-[0.2em]', size === 'lg' ? 'text-[22px]' : 'text-[15px]')}>SOMA</span>
     </div>
   );

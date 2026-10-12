@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { ChevronRight, Cloud, Download, FileText, Lock, RefreshCw, Upload } from 'lucide-react';
-import { Button, ConfirmSheet, Segmented, SectionLabel, Sheet, cx, useToast } from '../ui/kit';
+import { Button, ConfirmSheet, LogoMark, Segmented, SectionLabel, Sheet, cx, useToast } from '../ui/kit';
 import { navigate } from '../ui/router';
 import { useSyncState } from '../db/hooks';
 import { deleteMetric, resetHistory, saveMetrics, updateSettings } from '../db/repo';
@@ -157,6 +157,7 @@ export function SettingsScreen({ settings }: { settings: Settings }) {
       </div>
 
       <div className="flex flex-col items-center gap-3 pb-2">
+        <LogoMark className="h-9 text-accent-fg" />
         <button onClick={() => setSheet('guide')} className="text-[13px] font-medium text-accent-fg">
           Ver la guía de bienvenida
         </button>

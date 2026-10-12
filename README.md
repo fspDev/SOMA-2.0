@@ -40,7 +40,7 @@ npm test           # tests
 npm run build      # typecheck + build de producción en dist/
 ```
 
-Los íconos se generan con `node scripts/make-icons.mjs`.
+El logo vive en `assets/soma-logo.svg` (vectorizado del ícono original). Los íconos de la PWA, el favicon y `src/ui/logoPath.ts` se generan desde ahí con `node scripts/make-icons.mjs`.
 
 ## Habilitar “Con cuenta” (opcional)
 
